@@ -3,6 +3,8 @@ block content %}
 <body class="text-center">
     <div class="container">
         <form action="" method="POST" class="form-register" style="color: white">
+          <!-- protect from CSRF attacks -->
+          {{ form.hidden_tag() }}
           <img class="my-4" src="https://cdn.dribbble.com/users/230290/screenshots/15128882/media/4175d17c66f179fea9b969bbf946820f.jpg?compress=1&resize=400x300&vertical=top">
           <h1 class="h3 mb-3 font-weight-normal">
               Please create your Account
