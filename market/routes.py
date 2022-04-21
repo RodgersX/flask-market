@@ -1,6 +1,6 @@
 import email
 from hashlib import new
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash, get_flashed_messages 
 from market import app, db
 from market.models import Item, User
 from market.forms import RegisterForm
@@ -32,4 +32,8 @@ def register_page():
         db.session.commit()
 
         return redirect(url_for("market_page"))
+
+    if form.errors:
+        for err_msg in form.errors.values():
+            flash(f"error encountered: {err_msg}", category='danger')
     return render_template("register.html", form=form)
