@@ -1,3 +1,4 @@
+from tokenize import String
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
@@ -49,3 +50,9 @@ class RegisterForm(FlaskForm):
         ],
     )
     submit = SubmitField(label="Create Account")
+
+
+class LoginForm(FlaskForm):
+    username = StringField(label='User Name:', validators=[DataRequired()])
+    password=PasswordField(label='Password:', validators=[DataRequired()])
+    submit = SubmitField(label="Sign In")
